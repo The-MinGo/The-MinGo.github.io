@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<search>
+  <entry>
+    <title>Hexo的开始之旅</title>
+    <url>/2020/07/23/Hexo%E7%9A%84%E5%BC%80%E5%A7%8B%E4%B9%8B%E6%97%85/</url>
+    <content><![CDATA[<p>Hexo是一位来自台湾的技术大佬编写的个人博客框架。其可使用Markdown渲染引擎来解析文章，生成静态的网页。</p>
+<a id="more"></a>
+
+<h2 id="1-开始之前的准备"><a href="#1-开始之前的准备" class="headerlink" title="1.开始之前的准备"></a>1.开始之前的准备</h2><p>在安装Hexo之前请确保电脑中已经装有<code>node.js</code>和<code>Git</code>。</p>
+<h3 id="1-1-安装Hexo"><a href="#1-1-安装Hexo" class="headerlink" title="1.1.安装Hexo"></a>1.1.安装Hexo</h3><p>可使用<code>npm</code>或者<code>cnpm</code>来安装Hexo</p>
+<figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">// 全局安装hexo包</span><br><span class="line">cnpm install -g hexo-cli</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-2-初始化一个项目"><a href="#1-2-初始化一个项目" class="headerlink" title="1.2.初始化一个项目"></a>1.2.初始化一个项目</h3><p>在指定文件夹下打开cmd，运行hexo命令创建项目<code>MinGoBlog</code>：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo init MinGoBlog</span><br></pre></td></tr></table></figure>
+
+<p>在该文件夹下自动创建了一个名为<code>MinGoBlog</code>的子文件夹，进入其中,导入依赖的包：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cd MinGoBlog</span><br><span class="line">cnpm install</span><br></pre></td></tr></table></figure>
+
+<p>运行框架，并进入游览器，就可以看到新建好的博客了：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo server</span><br></pre></td></tr></table></figure>
+
+<h3 id="1-3-写一篇博客"><a href="#1-3-写一篇博客" class="headerlink" title="1.3.写一篇博客"></a>1.3.写一篇博客</h3><p>新建一篇名为”Hexo的开始之旅”的博客：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo new Hexo的开始之旅</span><br><span class="line">// 如果文章名包含空格，需用双引号括起来</span><br><span class="line">hexo new "News of China"</span><br></pre></td></tr></table></figure>
+
+<h2 id="2-部署到GitHub上"><a href="#2-部署到GitHub上" class="headerlink" title="2.部署到GitHub上"></a>2.部署到<code>GitHub</code>上</h2><h3 id="2-1-Git配置"><a href="#2-1-Git配置" class="headerlink" title="2.1.Git配置"></a>2.1.Git配置</h3><p>安装最新版的<code>Git</code>可设置自动配置相关的环境变量<code>path</code>。</p>
+<p>我使用的编辑器是<code>VSCode</code>。新建终端输入命令<code>git</code>，若可识别该关键字就好。若不能识别，首先确保<code>Git</code>的<code>bin</code>目录已加入环境变量<code>path</code>，然后在<code>VSCode</code>的<code>setting.json</code>文件中设置<code>git.path</code>项：</p>
+<figure class="highlight"><table><tr><td class="code"><pre><span class="line">"git.path": "Git的安装目录/cmd/git.exe",</span><br></pre></td></tr></table></figure>
+
+<p>哈哈，这步在部署时好像没啥用。。。不过咱也可以把这个Hexo个人博客的项目上传到GitHub上。</p>
+<h3 id="2-2-新建个人仓库"><a href="#2-2-新建个人仓库" class="headerlink" title="2.2.新建个人仓库"></a>2.2.新建个人仓库</h3><p>仓库名设置为<code>&lt;username&gt;.github.io</code>，性质公开。</p>
+<p><img src="/2020/07/23/Hexo%E7%9A%84%E5%BC%80%E5%A7%8B%E4%B9%8B%E6%97%85/2020-07-25-09-46-20.png" alt="创建个人仓库"></p>
+<center style="font-size:13px;color:#C0C0C0;text-decoration:underline">创建个人仓库</center>
+
+
+<p>同时修改Hexo项目根目录下<code>_config.yml</code>文件的<code>Deployment</code>这部分</p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Deployment</span></span><br><span class="line"><span class="comment">## Docs: https://hexo.io/docs/deployment.html</span></span><br><span class="line"><span class="attr">deploy:</span></span><br><span class="line">  <span class="attr">type:</span> <span class="string">git</span></span><br><span class="line">  <span class="attr">repo:</span> <span class="string">https://github.com/&lt;username&gt;/&lt;username&gt;.github.io</span></span><br><span class="line">  <span class="comment"># repo: https://github.com/The-MinGo/The-MinGo.github.io</span></span><br><span class="line">  <span class="attr">branch:</span> <span class="string">master</span></span><br></pre></td></tr></table></figure>
+
+<p>修改完并保存好后，记得先安装Hexo的推送工具<code>hexo-deployer-git</code>：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cnpm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+
+<p>然后在终端运行命令：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">hexo clean  // 清除缓存文件(db.json)和已生成的静态文件(public文件夹)</span><br><span class="line">hexo generate // 生成静态文件，可简写为 hexo g</span><br><span class="line">hexo deploy // 部署网站，可简写为 hexo d</span><br></pre></td></tr></table></figure>
+
+<p>这样，就能在网址<a href="https://the-mingo.github.io/">https://the-mingo.github.io/</a>看到这个博客网站了。</p>
+<p>如果博客做了修改，还得重新运行上面三个命令，把变更推送到网站上去。</p>
+<h2 id="3-上传图片"><a href="#3-上传图片" class="headerlink" title="3.上传图片"></a>3.上传图片</h2><p>博客岂能无图？上传图片一共有三个步骤。</p>
+<h3 id="3-1-配置根目录下的-config-yml文件"><a href="#3-1-配置根目录下的-config-yml文件" class="headerlink" title="3.1. 配置根目录下的_config.yml文件"></a>3.1. 配置根目录下的<code>_config.yml</code>文件</h3><p>找到<code>post_asset_folder</code>字段，将其值由默认的<code>false</code>改为<code>true</code></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="attr">post_asset_folder:</span> <span class="literal">true</span> <span class="comment"># 创建一个与文章同名的文件夹来存储图片等资源</span></span><br></pre></td></tr></table></figure>
+
+<p>这样，在新建文章的时候，就会在同目录下创建一个与文章同名的文件夹了。</p>
+<h3 id="3-2-在项目内导入hexo-asset-image包"><a href="#3-2-在项目内导入hexo-asset-image包" class="headerlink" title="3.2.在项目内导入hexo-asset-image包"></a>3.2.在项目内导入<code>hexo-asset-image</code>包</h3><figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cnpm install hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<p><em>枯了枯了</em>，这样下的插件版本好像有BUG，在运行<code>hexo generate</code>后无法在相应<code>html</code>文件中生成正确的图片路径。</p>
+<p>咱在<code>CSDN</code>上找到了一个可用的低版本：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">cnpm install https://github.com/7ym0n/hexo-asset-image --save</span><br></pre></td></tr></table></figure>
+
+<h3 id="3-3-插入图片"><a href="#3-3-插入图片" class="headerlink" title="3.3.插入图片"></a>3.3.插入图片</h3><p>将要插入的图片放入与文章同名的文件夹下，然后按<code>Markdown</code>语法插入图片</p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line">![创建个人仓库](Hexo的开始之旅/2020-07-25-09-46-20.png)</span><br></pre></td></tr></table></figure>
+
+<p>这个是创建个人仓库时插入的图片。</p>
+<p><strong>PS: 使用的是<code>/</code>，而不是<code>\</code>。</strong></p>
+<p>虽然后者也可在<code>Markdown</code>文件中显示图片，但在博客网站上是显示不出来的。</p>
+<p>前面与文章同名的文件夹也可以不加，但是在本地浏览<code>MD</code>文件时无法显示。加上的话，就可以同时在本地和网站上显示图片了。</p>
+<p>给图片添加图注，我采用的方法是在图片下方加上一段<code>HTML</code></p>
+<figure class="highlight html"><table><tr><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">center</span> <span class="attr">style</span>=<span class="string">"font-size:13px;color:#C0C0C0;text-decoration:underline"</span>&gt;</span>创建个人仓库<span class="tag">&lt;/<span class="name">center</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="4-更改主题"><a href="#4-更改主题" class="headerlink" title="4.更改主题"></a>4.更改主题</h2><p>主题好看，狗屁文章也赏心悦目。这里选择的主题是<code>NexT</code>，简洁而大方。</p>
+<p>首先在项目根目录下运行：</p>
+<figure class="highlight shell"><table><tr><td class="code"><pre><span class="line">git clone https://github.com/theme-next/hexo-theme-next.git themes/next</span><br></pre></td></tr></table></figure>
+
+<p>其中<a href="https://github.com/theme-next/hexo-theme-next.git" target="_blank" rel="noopener">https://github.com/theme-next/hexo-theme-next.git</a>是主题的地址，<code>themes/next</code>是克隆到本地的位置。</p>
+<p>克隆好后，修改<code>_config.yml</code>文件，将主题改为<code>next</code></p>
+<figure class="highlight yml"><table><tr><td class="code"><pre><span class="line"><span class="comment"># Extensions</span></span><br><span class="line"><span class="comment">## Plugins: https://hexo.io/plugins/</span></span><br><span class="line"><span class="comment">## Themes: https://hexo.io/themes/</span></span><br><span class="line"><span class="comment"># theme: landscape</span></span><br><span class="line"><span class="attr">theme:</span> <span class="string">next</span></span><br></pre></td></tr></table></figure>
+
+<p>对于<code>NexT</code>主题的相关配置和美化，见<a href="http://theme-next.iissnan.com/" target="_blank" rel="noopener">NexT使用文档</a>。<del>一言难尽啊。</del></p>
+]]></content>
+      <categories>
+        <category>Hexo</category>
+      </categories>
+      <tags>
+        <tag>Hexo</tag>
+      </tags>
+  </entry>
+  <entry>
+    <title>Hello World</title>
+    <url>/2020/07/27/hello-world/</url>
+    <content><![CDATA[<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
+<a id="more"></a>
+<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
+<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
+<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
+<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
+
+<p>More info: <a href="https://hexo.io/docs/one-command-deployment.html" target="_blank" rel="noopener">Deployment</a></p>
+]]></content>
+  </entry>
+  <entry>
+    <title>Markdown语法</title>
+    <url>/2020/07/24/Markdown%E8%AF%AD%E6%B3%95/</url>
+    <content><![CDATA[<p>也写过比较多的<code>Markdown</code>文档了。喜欢它简洁的写法，以及导出成<code>PDF</code>文件后的那种干净。特别是使用<code>Typroa</code>时，可以定制整个<code>MD</code>文档的主题风格，这是十分有趣的。</p>
+<p>但是，对于<code>Markdown</code>的语法却是掌握的零零碎碎。所以在这里，我把它的相关通用语法整理一下。</p>
+<a id="more"></a>
+
+<h2 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h2><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="section"># 一级标题</span></span><br><span class="line"><span class="section">## 二级标题</span></span><br><span class="line"><span class="section">### 三级标题</span></span><br><span class="line"><span class="section">#### 四级标题</span></span><br><span class="line"><span class="section">##### 五级标题</span></span><br><span class="line"><span class="section">###### 六级标题</span></span><br></pre></td></tr></table></figure>
+
+<p>采用这种写法，<code>Markdown</code>支持1-6级标题。</p>
+<h2 id="2-引用"><a href="#2-引用" class="headerlink" title="2.引用"></a>2.引用</h2><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="quote">&gt; 引用</span></span><br><span class="line">&gt;&gt; 内嵌引用</span><br><span class="line">&gt;&gt;&gt; 内嵌*2的引用</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>引用</p>
+<blockquote>
+<p>内嵌引用</p>
+<blockquote>
+<p>内嵌*2的引用</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="3-列表"><a href="#3-列表" class="headerlink" title="3.列表"></a>3.列表</h2><h3 id="3-1-无序列表"><a href="#3-1-无序列表" class="headerlink" title="3.1.无序列表"></a>3.1.无序列表</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">- </span>item1</span><br><span class="line"><span class="bullet">+ </span>item2</span><br><span class="line"><span class="bullet">* </span>item3</span><br></pre></td></tr></table></figure>
+
+<p>上面三种都可以用来创建无序列表中的列表项，但同一篇文章中无序列表的列表项符号应保持一致。</p>
+<h3 id="3-2-有序列表"><a href="#3-2-有序列表" class="headerlink" title="3.2.有序列表"></a>3.2.有序列表</h3><p>有序列表直接使用<code>序号</code>+<code>.</code>+<code>空格</code>即可。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="bullet">1. </span>item1</span><br><span class="line"><span class="bullet">2. </span>item2</span><br><span class="line"><span class="bullet">3. </span>item3</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>item1</li>
+<li>item2</li>
+<li>item3</li>
+</ol>
+<h2 id="4-代码块"><a href="#4-代码块" class="headerlink" title="4.代码块"></a>4.代码块</h2><p>相比于<code>Latex</code>中的写法，在<code>Markdown</code>文档中插入代码块更加简洁。</p>
+<h3 id="4-1-单行代码"><a href="#4-1-单行代码" class="headerlink" title="4.1.单行代码"></a>4.1.单行代码</h3><p>使用反引号将内容包裹</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="code">`cout &lt;&lt; "Hello world";`</span></span><br></pre></td></tr></table></figure>
+
+<p><code>cout &lt;&lt; &quot;Hello world&quot;;</code></p>
+<h3 id="4-2-多行代码"><a href="#4-2-多行代码" class="headerlink" title="4.2.多行代码"></a>4.2.多行代码</h3><p>在首尾使用三个反引号形成代码块环境，并标注出语言类型</p>
+<blockquote>
+<p>```C++<br>int yourAnswer;<br>cout &lt;&lt; “Please input your answer(1/2/3): “;<br>cin &gt;&gt; yourAnswer;<br>```</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="code"><pre><span class="line"><span class="keyword">int</span> yourAnswer;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"Please input your answer(1/2/3): "</span>;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; yourAnswer;</span><br></pre></td></tr></table></figure>
+
+<p><code>Markdown</code>支持显示的语言:</p>
+<table>
+<thead>
+<tr>
+<th align="center">关键字[以下任何一个都可以]</th>
+<th align="center">语言</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">c#, c-sharp, csharp</td>
+<td align="center">C#</td>
+</tr>
+<tr>
+<td align="center">java</td>
+<td align="center">Java</td>
+</tr>
+<tr>
+<td align="center">php</td>
+<td align="center">PHP</td>
+</tr>
+<tr>
+<td align="center">js, jscript, javascript</td>
+<td align="center">JavaScript</td>
+</tr>
+<tr>
+<td align="center">css</td>
+<td align="center">CSS</td>
+</tr>
+<tr>
+<td align="center">text, plain</td>
+<td align="center">text</td>
+</tr>
+<tr>
+<td align="center">sql</td>
+<td align="center">SQL</td>
+</tr>
+<tr>
+<td align="center">py, python</td>
+<td align="center">Python</td>
+</tr>
+<tr>
+<td align="center">bash, shell</td>
+<td align="center">Shell</td>
+</tr>
+<tr>
+<td align="center">sass, scss</td>
+<td align="center">SASS&amp;SCSS</td>
+</tr>
+<tr>
+<td align="center">perl, pl, Perl</td>
+<td align="center">Perl</td>
+</tr>
+<tr>
+<td align="center">swift</td>
+<td align="center">swift</td>
+</tr>
+<tr>
+<td align="center">go, golang</td>
+<td align="center">GO</td>
+</tr>
+<tr>
+<td align="center">cpp, c</td>
+<td align="center">C</td>
+</tr>
+<tr>
+<td align="center">applescript</td>
+<td align="center">AppleScript</td>
+</tr>
+<tr>
+<td align="center">actionscript3, as3</td>
+<td align="center">ActionScript 3.0</td>
+</tr>
+<tr>
+<td align="center">coldfusion, cf</td>
+<td align="center">ColdFusion</td>
+</tr>
+<tr>
+<td align="center">delphi, pascal, pas</td>
+<td align="center">Delphi</td>
+</tr>
+<tr>
+<td align="center">diff,patch</td>
+<td align="center">diff&amp;patch</td>
+</tr>
+<tr>
+<td align="center">erl, erlang</td>
+<td align="center">Erlang</td>
+</tr>
+<tr>
+<td align="center">groovy</td>
+<td align="center">Groovy</td>
+</tr>
+<tr>
+<td align="center">jfx, javafx</td>
+<td align="center">JavaFX</td>
+</tr>
+<tr>
+<td align="center">ruby, rails, ror, rb</td>
+<td align="center">Ruby</td>
+</tr>
+<tr>
+<td align="center">scala</td>
+<td align="center">Scala</td>
+</tr>
+<tr>
+<td align="center">vb, vbnet</td>
+<td align="center">Visual Basic</td>
+</tr>
+<tr>
+<td align="center">xml, xhtml, xslt, html</td>
+<td align="center">XML</td>
+</tr>
+<tr>
+<td align="center">objc, obj-c</td>
+<td align="center">Objective C</td>
+</tr>
+<tr>
+<td align="center">f#, f-sharp, fsharp</td>
+<td align="center">F#</td>
+</tr>
+<tr>
+<td align="center">r, s, splus</td>
+<td align="center">R</td>
+</tr>
+<tr>
+<td align="center">matlab</td>
+<td align="center">matlab</td>
+</tr>
+</tbody></table>
+<h2 id="5-水平线"><a href="#5-水平线" class="headerlink" title="5.水平线"></a>5.水平线</h2><p>水平线也有3种写法，不过同一篇文章需保持创建风格的一致，也应始终坚持使用同一种写法在一篇文章中。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="emphasis">___</span></span><br><span class="line"><span class="emphasis">***</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-表格"><a href="#6-表格" class="headerlink" title="6.表格"></a>6.表格</h2><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">名称 | 地址 | 库存</span><br><span class="line">:- | :-: | -:</span><br><span class="line">马桶盖 | 武汉仓001 | 100000</span><br><span class="line">安乐椅 | 合肥仓012 | 2000000</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="center">地址</th>
+<th align="right">库存</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">马桶盖</td>
+<td align="center">武汉仓001</td>
+<td align="right">100000</td>
+</tr>
+<tr>
+<td align="left">安乐椅</td>
+<td align="center">合肥仓012</td>
+<td align="right">2000000</td>
+</tr>
+</tbody></table>
+<h2 id="7-链接"><a href="#7-链接" class="headerlink" title="7.链接"></a>7.链接</h2><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">[<span class="string">百度一下</span>](<span class="link">https://www.baidu.com/</span>)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.baidu.com/" target="_blank" rel="noopener">百度一下</a></p>
+<h2 id="8-图片"><a href="#8-图片" class="headerlink" title="8.图片"></a>8.图片</h2><p>与插入链接的格式相近，前加<code>!</code>即可。</p>
+<h2 id="9-字体格式"><a href="#9-字体格式" class="headerlink" title="9.字体格式"></a>9.字体格式</h2><h3 id="9-1-加粗"><a href="#9-1-加粗" class="headerlink" title="9.1.加粗"></a>9.1.加粗</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="strong">**我粗吗？**</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>我粗吗？</strong></p>
+<h3 id="9-2-斜体"><a href="#9-2-斜体" class="headerlink" title="9.2.斜体"></a>9.2.斜体</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="emphasis">*我怎么斜了？*</span></span><br><span class="line"><span class="emphasis">_也是斜体_</span></span><br></pre></td></tr></table></figure>
+
+<p><em>我怎么斜了？</em><br><em>也是斜体</em></p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="strong">***又粗有斜的字。**</span>*</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>又粗有斜的字。</em></strong></p>
+<h3 id="9-3-高亮"><a href="#9-3-高亮" class="headerlink" title="9.3.高亮"></a>9.3.高亮</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">=貌似只有CSDN才支持这么写=</span><br></pre></td></tr></table></figure>
+
+<p>不过可以使用<code>HTML</code>标签来达到高亮显示的目的</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span> = <span class="string">#00FFFF</span> <span class="attr">size</span>=<span class="string">5</span> <span class="attr">face</span>=<span class="string">"STCAIYUN"</span>&gt;</span></span></span><br><span class="line">靓仔，亮不亮？</span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">font</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><font color="#00FFFF" size="5" face="STCAIYUN">靓仔，亮不亮？</font></p>
+<h3 id="9-4-加删除线"><a href="#9-4-加删除线" class="headerlink" title="9.4.加删除线"></a>9.4.加删除线</h3><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line">~~GHS，拷走~~</span><br></pre></td></tr></table></figure>
+
+<p><del>GHS，拷走</del></p>
+<h3 id="9-5-加下划线"><a href="#9-5-加下划线" class="headerlink" title="9.5.加下划线"></a>9.5.加下划线</h3><p><code>Markdown</code>与<code>HTML</code>的语法兼容，可使用标签<code>&lt;u&gt;</code>来实现加下划线的效果。</p>
+<figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">u</span>&gt;</span></span>我下面有线<span class="xml"><span class="tag">&lt;/<span class="name">u</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><u>我下面有线</u></p>
+<h2 id="10-注释"><a href="#10-注释" class="headerlink" title="10.注释"></a>10.注释</h2><figure class="highlight markdown"><table><tr><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!--我是你永远看不见的人--&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<!--我是你永远看不见的人-->
+
+<h2 id="11-数学公式"><a href="#11-数学公式" class="headerlink" title="11.数学公式"></a>11.数学公式</h2><p><code>Markdown</code>支持<code>Latex</code>的数学公式</p>
+<p>$$<br>E = mc^2<br>$$</p>
+]]></content>
+      <categories>
+        <category>Markdown</category>
+      </categories>
+      <tags>
+        <tag>Markdown</tag>
+      </tags>
+  </entry>
+</search>

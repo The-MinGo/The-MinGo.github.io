@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 4.2.1">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"the-mingo.github.io","root":"/","scheme":"Gemini","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":true,"show_result":true,"style":"mac"},"back2top":{"enable":true,"sidebar":false,"scrollpercent":true},"bookmark":{"enable":true,"color":"#ff431e","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":true,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}},"path":"search.xml"};
+  </script>
+
+  <meta name="description" content="也写过比较多的Markdown文档了。喜欢它简洁的写法，以及导出成PDF文件后的那种干净。特别是使用Typroa时，可以定制整个MD文档的主题风格，这是十分有趣的。 但是，对于Markdown的语法却是掌握的零零碎碎。所以在这里，我把它的相关通用语法整理一下。">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown语法">
+<meta property="og:url" content="https://the-mingo.github.io/2020/07/24/Markdown%E8%AF%AD%E6%B3%95/index.html">
+<meta property="og:site_name" content="MinGo">
+<meta property="og:description" content="也写过比较多的Markdown文档了。喜欢它简洁的写法，以及导出成PDF文件后的那种干净。特别是使用Typroa时，可以定制整个MD文档的主题风格，这是十分有趣的。 但是，对于Markdown的语法却是掌握的零零碎碎。所以在这里，我把它的相关通用语法整理一下。">
+<meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2020-07-24T01:32:28.000Z">
+<meta property="article:modified_time" content="2020-07-28T00:58:41.259Z">
+<meta property="article:author" content="MinGo">
+<meta property="article:tag" content="Markdown">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://the-mingo.github.io/2020/07/24/Markdown%E8%AF%AD%E6%B3%95/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Markdown语法 | MinGo</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">MinGo</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-tags">
+
+    <a href="/tags/" rel="section"><i class="fa fa-tags fa-fw"></i>标签</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+  <div class="reading-progress-bar"></div>
+  <a role="button" class="book-mark-link book-mark-link-fixed"></a>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="https://the-mingo.github.io/2020/07/24/Markdown%E8%AF%AD%E6%B3%95/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images%5Crose.jpg">
+      <meta itemprop="name" content="MinGo">
+      <meta itemprop="description" content="我的个人博客，记录学习的足迹。">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="MinGo">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Markdown语法
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2020-07-24 09:32:28" itemprop="dateCreated datePublished" datetime="2020-07-24T09:32:28+08:00">2020-07-24</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/Markdown/" itemprop="url" rel="index"><span itemprop="name">Markdown</span></a>
+                </span>
+            </span>
+
+          
+
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+              <span>1.3k</span>
+            </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>也写过比较多的<code>Markdown</code>文档了。喜欢它简洁的写法，以及导出成<code>PDF</code>文件后的那种干净。特别是使用<code>Typroa</code>时，可以定制整个<code>MD</code>文档的主题风格，这是十分有趣的。</p>
+<p>但是，对于<code>Markdown</code>的语法却是掌握的零零碎碎。所以在这里，我把它的相关通用语法整理一下。</p>
+<a id="more"></a>
+
+<h2 id="1-标题"><a href="#1-标题" class="headerlink" title="1.标题"></a>1.标题</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># 一级标题</span></span><br><span class="line"><span class="section">## 二级标题</span></span><br><span class="line"><span class="section">### 三级标题</span></span><br><span class="line"><span class="section">#### 四级标题</span></span><br><span class="line"><span class="section">##### 五级标题</span></span><br><span class="line"><span class="section">###### 六级标题</span></span><br></pre></td></tr></table></figure>
+
+<p>采用这种写法，<code>Markdown</code>支持1-6级标题。</p>
+<h2 id="2-引用"><a href="#2-引用" class="headerlink" title="2.引用"></a>2.引用</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="quote">&gt; 引用</span></span><br><span class="line">&gt;&gt; 内嵌引用</span><br><span class="line">&gt;&gt;&gt; 内嵌*2的引用</span><br></pre></td></tr></table></figure>
+
+<blockquote>
+<p>引用</p>
+<blockquote>
+<p>内嵌引用</p>
+<blockquote>
+<p>内嵌*2的引用</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="3-列表"><a href="#3-列表" class="headerlink" title="3.列表"></a>3.列表</h2><h3 id="3-1-无序列表"><a href="#3-1-无序列表" class="headerlink" title="3.1.无序列表"></a>3.1.无序列表</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">- </span>item1</span><br><span class="line"><span class="bullet">+ </span>item2</span><br><span class="line"><span class="bullet">* </span>item3</span><br></pre></td></tr></table></figure>
+
+<p>上面三种都可以用来创建无序列表中的列表项，但同一篇文章中无序列表的列表项符号应保持一致。</p>
+<h3 id="3-2-有序列表"><a href="#3-2-有序列表" class="headerlink" title="3.2.有序列表"></a>3.2.有序列表</h3><p>有序列表直接使用<code>序号</code>+<code>.</code>+<code>空格</code>即可。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="bullet">1. </span>item1</span><br><span class="line"><span class="bullet">2. </span>item2</span><br><span class="line"><span class="bullet">3. </span>item3</span><br></pre></td></tr></table></figure>
+
+<ol>
+<li>item1</li>
+<li>item2</li>
+<li>item3</li>
+</ol>
+<h2 id="4-代码块"><a href="#4-代码块" class="headerlink" title="4.代码块"></a>4.代码块</h2><p>相比于<code>Latex</code>中的写法，在<code>Markdown</code>文档中插入代码块更加简洁。</p>
+<h3 id="4-1-单行代码"><a href="#4-1-单行代码" class="headerlink" title="4.1.单行代码"></a>4.1.单行代码</h3><p>使用反引号将内容包裹</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="code">`cout &lt;&lt; "Hello world";`</span></span><br></pre></td></tr></table></figure>
+
+<p><code>cout &lt;&lt; &quot;Hello world&quot;;</code></p>
+<h3 id="4-2-多行代码"><a href="#4-2-多行代码" class="headerlink" title="4.2.多行代码"></a>4.2.多行代码</h3><p>在首尾使用三个反引号形成代码块环境，并标注出语言类型</p>
+<blockquote>
+<p>```C++<br>int yourAnswer;<br>cout &lt;&lt; “Please input your answer(1/2/3): “;<br>cin &gt;&gt; yourAnswer;<br>```</p>
+</blockquote>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">int</span> yourAnswer;</span><br><span class="line"><span class="built_in">cout</span> &lt;&lt; <span class="string">"Please input your answer(1/2/3): "</span>;</span><br><span class="line"><span class="built_in">cin</span> &gt;&gt; yourAnswer;</span><br></pre></td></tr></table></figure>
+
+<p><code>Markdown</code>支持显示的语言:</p>
+<table>
+<thead>
+<tr>
+<th align="center">关键字[以下任何一个都可以]</th>
+<th align="center">语言</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="center">c#, c-sharp, csharp</td>
+<td align="center">C#</td>
+</tr>
+<tr>
+<td align="center">java</td>
+<td align="center">Java</td>
+</tr>
+<tr>
+<td align="center">php</td>
+<td align="center">PHP</td>
+</tr>
+<tr>
+<td align="center">js, jscript, javascript</td>
+<td align="center">JavaScript</td>
+</tr>
+<tr>
+<td align="center">css</td>
+<td align="center">CSS</td>
+</tr>
+<tr>
+<td align="center">text, plain</td>
+<td align="center">text</td>
+</tr>
+<tr>
+<td align="center">sql</td>
+<td align="center">SQL</td>
+</tr>
+<tr>
+<td align="center">py, python</td>
+<td align="center">Python</td>
+</tr>
+<tr>
+<td align="center">bash, shell</td>
+<td align="center">Shell</td>
+</tr>
+<tr>
+<td align="center">sass, scss</td>
+<td align="center">SASS&amp;SCSS</td>
+</tr>
+<tr>
+<td align="center">perl, pl, Perl</td>
+<td align="center">Perl</td>
+</tr>
+<tr>
+<td align="center">swift</td>
+<td align="center">swift</td>
+</tr>
+<tr>
+<td align="center">go, golang</td>
+<td align="center">GO</td>
+</tr>
+<tr>
+<td align="center">cpp, c</td>
+<td align="center">C</td>
+</tr>
+<tr>
+<td align="center">applescript</td>
+<td align="center">AppleScript</td>
+</tr>
+<tr>
+<td align="center">actionscript3, as3</td>
+<td align="center">ActionScript 3.0</td>
+</tr>
+<tr>
+<td align="center">coldfusion, cf</td>
+<td align="center">ColdFusion</td>
+</tr>
+<tr>
+<td align="center">delphi, pascal, pas</td>
+<td align="center">Delphi</td>
+</tr>
+<tr>
+<td align="center">diff,patch</td>
+<td align="center">diff&amp;patch</td>
+</tr>
+<tr>
+<td align="center">erl, erlang</td>
+<td align="center">Erlang</td>
+</tr>
+<tr>
+<td align="center">groovy</td>
+<td align="center">Groovy</td>
+</tr>
+<tr>
+<td align="center">jfx, javafx</td>
+<td align="center">JavaFX</td>
+</tr>
+<tr>
+<td align="center">ruby, rails, ror, rb</td>
+<td align="center">Ruby</td>
+</tr>
+<tr>
+<td align="center">scala</td>
+<td align="center">Scala</td>
+</tr>
+<tr>
+<td align="center">vb, vbnet</td>
+<td align="center">Visual Basic</td>
+</tr>
+<tr>
+<td align="center">xml, xhtml, xslt, html</td>
+<td align="center">XML</td>
+</tr>
+<tr>
+<td align="center">objc, obj-c</td>
+<td align="center">Objective C</td>
+</tr>
+<tr>
+<td align="center">f#, f-sharp, fsharp</td>
+<td align="center">F#</td>
+</tr>
+<tr>
+<td align="center">r, s, splus</td>
+<td align="center">R</td>
+</tr>
+<tr>
+<td align="center">matlab</td>
+<td align="center">matlab</td>
+</tr>
+</tbody></table>
+<h2 id="5-水平线"><a href="#5-水平线" class="headerlink" title="5.水平线"></a>5.水平线</h2><p>水平线也有3种写法，不过同一篇文章需保持创建风格的一致，也应始终坚持使用同一种写法在一篇文章中。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">---</span><br><span class="line"><span class="emphasis">___</span></span><br><span class="line"><span class="emphasis">***</span></span><br></pre></td></tr></table></figure>
+
+<h2 id="6-表格"><a href="#6-表格" class="headerlink" title="6.表格"></a>6.表格</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">名称 | 地址 | 库存</span><br><span class="line">:- | :-: | -:</span><br><span class="line">马桶盖 | 武汉仓001 | 100000</span><br><span class="line">安乐椅 | 合肥仓012 | 2000000</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th align="left">名称</th>
+<th align="center">地址</th>
+<th align="right">库存</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">马桶盖</td>
+<td align="center">武汉仓001</td>
+<td align="right">100000</td>
+</tr>
+<tr>
+<td align="left">安乐椅</td>
+<td align="center">合肥仓012</td>
+<td align="right">2000000</td>
+</tr>
+</tbody></table>
+<h2 id="7-链接"><a href="#7-链接" class="headerlink" title="7.链接"></a>7.链接</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">[<span class="string">百度一下</span>](<span class="link">https://www.baidu.com/</span>)</span><br></pre></td></tr></table></figure>
+
+<p><a href="https://www.baidu.com/" target="_blank" rel="noopener">百度一下</a></p>
+<h2 id="8-图片"><a href="#8-图片" class="headerlink" title="8.图片"></a>8.图片</h2><p>与插入链接的格式相近，前加<code>!</code>即可。</p>
+<h2 id="9-字体格式"><a href="#9-字体格式" class="headerlink" title="9.字体格式"></a>9.字体格式</h2><h3 id="9-1-加粗"><a href="#9-1-加粗" class="headerlink" title="9.1.加粗"></a>9.1.加粗</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">**我粗吗？**</span></span><br></pre></td></tr></table></figure>
+
+<p><strong>我粗吗？</strong></p>
+<h3 id="9-2-斜体"><a href="#9-2-斜体" class="headerlink" title="9.2.斜体"></a>9.2.斜体</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="emphasis">*我怎么斜了？*</span></span><br><span class="line"><span class="emphasis">_也是斜体_</span></span><br></pre></td></tr></table></figure>
+
+<p><em>我怎么斜了？</em><br><em>也是斜体</em></p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="strong">***又粗有斜的字。**</span>*</span><br></pre></td></tr></table></figure>
+
+<p><strong><em>又粗有斜的字。</em></strong></p>
+<h3 id="9-3-高亮"><a href="#9-3-高亮" class="headerlink" title="9.3.高亮"></a>9.3.高亮</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">=貌似只有CSDN才支持这么写=</span><br></pre></td></tr></table></figure>
+
+<p>不过可以使用<code>HTML</code>标签来达到高亮显示的目的</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">font</span> <span class="attr">color</span> = <span class="string">#00FFFF</span> <span class="attr">size</span>=<span class="string">5</span> <span class="attr">face</span>=<span class="string">"STCAIYUN"</span>&gt;</span></span></span><br><span class="line">靓仔，亮不亮？</span><br><span class="line"><span class="xml"><span class="tag">&lt;/<span class="name">font</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><font color="#00FFFF" size="5" face="STCAIYUN">靓仔，亮不亮？</font></p>
+<h3 id="9-4-加删除线"><a href="#9-4-加删除线" class="headerlink" title="9.4.加删除线"></a>9.4.加删除线</h3><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">~~GHS，拷走~~</span><br></pre></td></tr></table></figure>
+
+<p><del>GHS，拷走</del></p>
+<h3 id="9-5-加下划线"><a href="#9-5-加下划线" class="headerlink" title="9.5.加下划线"></a>9.5.加下划线</h3><p><code>Markdown</code>与<code>HTML</code>的语法兼容，可使用标签<code>&lt;u&gt;</code>来实现加下划线的效果。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="tag">&lt;<span class="name">u</span>&gt;</span></span>我下面有线<span class="xml"><span class="tag">&lt;/<span class="name">u</span>&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<p><u>我下面有线</u></p>
+<h2 id="10-注释"><a href="#10-注释" class="headerlink" title="10.注释"></a>10.注释</h2><figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="xml"><span class="comment">&lt;!--我是你永远看不见的人--&gt;</span></span></span><br></pre></td></tr></table></figure>
+
+<!--我是你永远看不见的人-->
+
+<h2 id="11-数学公式"><a href="#11-数学公式" class="headerlink" title="11.数学公式"></a>11.数学公式</h2><p><code>Markdown</code>支持<code>Latex</code>的数学公式</p>
+<p>$$<br>E = mc^2<br>$$</p>
+
+    </div>
+
+    
+    
+    
+        
+
+<div>
+<ul class="post-copyright">
+  <li class="post-copyright-author">
+    <strong>本文作者： </strong>MinGo
+  </li>
+  <li class="post-copyright-link">
+    <strong>本文链接：</strong>
+    <a href="https://the-mingo.github.io/2020/07/24/Markdown%E8%AF%AD%E6%B3%95/" title="Markdown语法">https://the-mingo.github.io/2020/07/24/Markdown语法/</a>
+  </li>
+  <li class="post-copyright-license">
+    <strong>版权声明： </strong>本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" rel="noopener" target="_blank"><i class="fab fa-fw fa-creative-commons"></i>BY-NC-SA</a> 许可协议。转载请注明出处！
+  </li>
+</ul>
+</div>
+
+
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/Markdown/" rel="tag"><i class="fa fa-tag"></i> Markdown</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2020/07/23/Hexo%E7%9A%84%E5%BC%80%E5%A7%8B%E4%B9%8B%E6%97%85/" rel="prev" title="Hexo的开始之旅">
+      <i class="fa fa-chevron-left"></i> Hexo的开始之旅
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2020/07/27/hello-world/" rel="next" title="Hello World">
+      Hello World <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#1-标题"><span class="nav-text">1.标题</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#2-引用"><span class="nav-text">2.引用</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#3-列表"><span class="nav-text">3.列表</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#3-1-无序列表"><span class="nav-text">3.1.无序列表</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#3-2-有序列表"><span class="nav-text">3.2.有序列表</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#4-代码块"><span class="nav-text">4.代码块</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#4-1-单行代码"><span class="nav-text">4.1.单行代码</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#4-2-多行代码"><span class="nav-text">4.2.多行代码</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#5-水平线"><span class="nav-text">5.水平线</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#6-表格"><span class="nav-text">6.表格</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#7-链接"><span class="nav-text">7.链接</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#8-图片"><span class="nav-text">8.图片</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#9-字体格式"><span class="nav-text">9.字体格式</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#9-1-加粗"><span class="nav-text">9.1.加粗</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-2-斜体"><span class="nav-text">9.2.斜体</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-3-高亮"><span class="nav-text">9.3.高亮</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-4-加删除线"><span class="nav-text">9.4.加删除线</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#9-5-加下划线"><span class="nav-text">9.5.加下划线</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#10-注释"><span class="nav-text">10.注释</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#11-数学公式"><span class="nav-text">11.数学公式</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="MinGo"
+      src="/images%5Crose.jpg">
+  <p class="site-author-name" itemprop="name">MinGo</p>
+  <div class="site-description" itemprop="description">我的个人博客，记录学习的足迹。</div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">3</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">标签</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2020</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">MinGo的个人创作</span>
+    <span class="post-meta-divider">|</span>
+    <span class="post-meta-item-icon">
+      <i class="fa fa-chart-area"></i>
+    </span>
+      <span class="post-meta-item-text">站点总字数：</span>
+    <span title="站点总字数">3k</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+<script src="/js/bookmark.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+          load: ['[tex]/mhchem'],
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+          packages: {'[+]': ['mhchem']},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
